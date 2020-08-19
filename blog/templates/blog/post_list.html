@@ -2,6 +2,9 @@
 
 {% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
 {% block content %}
+  {% if search %}
+    <p>Showing results for <b>"{{search}}"</b></p>
+  {% endif %}
   {% for post in object_list %}
     <div class="container border pb-3 mb-3">
       <h2 class="pt-3"><a href="{% url 'post' post.id %}">{{ post.title }}</a></h2>

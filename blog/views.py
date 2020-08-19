@@ -16,6 +16,18 @@ class PostList(ListView):
   model = Post
   ordering = ['-date_posted']
 
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context["search"] = self.request.GET.get('search')
+    return context
+  
+  def get_queryset(self):
+    query = self.request.GET.get('search')
+    if query:
+      return Post.objects.filter(title__contains=query) | Post.objects.filter(author__username__iexact=query)
+    return super().get_queryset()
+  
+
 
 class PostDetail(DetailView):
   model = Post
