@@ -7,6 +7,9 @@
     <p>
       By <a href="{% url 'profile' post.author.id %}"><b>{{ post.author }}</b></a> on <b>{{ post.date_posted|date:"l" }} the {{ post.date_posted|date:"jS" }} at {{ post.date_posted|date:"P" }}</b>
     </p>
+    <p>
+      Subject: <b>{{ post.subject }}</b>
+    </p>
     {% autoescape off %}
       {{ post.content }}
     {% endautoescape %}

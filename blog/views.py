@@ -24,9 +24,8 @@ class PostList(ListView):
   def get_queryset(self):
     query = self.request.GET.get('search')
     if query:
-      return Post.objects.filter(title__contains=query) | Post.objects.filter(author__username__iexact=query)
+      return Post.objects.filter(title__contains=query) | Post.objects.filter(author__username__iexact=query) | Post.objects.filter(subject__iexact=query)
     return super().get_queryset()
-  
 
 
 class PostDetail(DetailView):
@@ -35,7 +34,7 @@ class PostDetail(DetailView):
 
 class CreatePost(CreateView):
   model = Post
-  fields = ['title', 'content']
+  fields = ['title', 'subject', 'content']
 
   def form_valid(self, form):
     form.instance.author = self.request.user
@@ -44,7 +43,7 @@ class CreatePost(CreateView):
 
 class UpdatePost(UpdateView):
   model = Post
-  fields = ['title', 'content']
+  fields = ['title', 'subject', 'content']
 
 
 class DeletePost(DeleteView):

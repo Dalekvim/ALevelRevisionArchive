@@ -5,22 +5,22 @@ from django.shortcuts import reverse
 from django.utils import timezone
 from tinymce.models import HTMLField
 
+SUBJECTS = (
+  ('Further Maths', 'Further Maths'),
+  ('Maths', 'Maths'),
+  ('Physics', 'Physics'),
+  ('Computer Science', 'Computer Science'),
+  ('Other', 'Other'),
+)
+
 # Create your models here.
 class Post(Model):
   title = CharField(max_length=150)
   author = ForeignKey(User, on_delete=models.CASCADE)
   date_posted = DateTimeField(default=timezone.now)
+  subject = CharField(max_length=50, choices=SUBJECTS, default="Other")
   content = HTMLField()
 
   def get_absolute_url(self):
       return reverse("post", kwargs={"pk": self.pk})
 
-
-#class Profile(Model):
-#  user = OneToOneField(User, on_delete=models.CASCADE)
-#  date_of_birth = DateField(default=timezone.now)
-#  bio = HTMLField(default="Write a bit about yourself.")
-
-#  def get_absolute_url(self):
-#      return reverse("profile", kwargs={"pk": self.pk})
-  
