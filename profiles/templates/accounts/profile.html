@@ -2,7 +2,7 @@
 
 {% block heading %}{% block title %}{{ user }}'s Profile{% endblock %} Page{% endblock %}
 {% block content %}
-  <div>
+  <div class="pb-2">
     <label class="requiredField">Date of Birth</label>
     <p>
       The {{ user.profile.date_of_birth|date:"jS" }} of {{ user.profile.date_of_birth|date:"F Y" }}
@@ -13,7 +13,7 @@
     {% endautoescape %}
   </div>
   {% if request.user == user %}
-    <div class="border-top pt-1">
+    <div class="border-top">
       <a class="btn btn-primary mt-3" href="{% url 'profile-update' user.profile.id %}">Update</a>
     </div>
   {% endif %}

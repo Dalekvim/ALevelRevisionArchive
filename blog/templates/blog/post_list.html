@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
+{% block heading %}{% block title %}{{ title }}{% endblock %}{% endblock %}
 {% block content %}
   {% if search %}
     <p>Showing results for <b>"{{search}}"</b></p>

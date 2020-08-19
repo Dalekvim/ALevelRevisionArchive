@@ -2,7 +2,7 @@
 
 {% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
 {% block content %}
-  <div class="pb-3 mb-3 border-bottom">
+  <div class="pb-2 mb-3 border-bottom">
     <h2>{{ post.title }}</h2>
     <p>
       By <a href="{% url 'profile' post.author.id %}"><b>{{ post.author }}</b></a> on <b>{{ post.date_posted|date:"l" }} the {{ post.date_posted|date:"jS" }} at {{ post.date_posted|date:"P" }}</b>
