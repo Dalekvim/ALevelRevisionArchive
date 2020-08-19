@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
+{% block content %}
+  {% if request.user == post.author %}
+    <form method="POST">
+      {% csrf_token %}
+      <legend class="pb-3">
+        Are you sure you want to delete this post?
+      </legend>
+      <div class="form-group">
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="pl-3" href="{% url 'home' %}">Cancel</a>
+      </div>
+    </form>
+  {% else %}
+    <h2 class="text-warning">You're not allowed on this page!</h2>
+  {% endif %}
+{% endblock %}

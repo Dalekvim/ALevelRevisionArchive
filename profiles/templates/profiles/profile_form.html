@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block heading %}{{ profile.user }}'s {% block title %}{{ title }}{% endblock %} Page{% endblock %}
+{% block content %}
+  {% if request.user == profile.user %}
+    {% include 'update.html' %}
+  {% else %}
+    <h2 class="text-warning">You're not allowed on this page!</h2>
+  {% endif %}
+{% endblock %}

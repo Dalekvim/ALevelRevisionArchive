@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
+{% block content %}
+  {% if post.author %}
+    {% if request.user == post.author %}
+      {% include 'update.html' %}
+    {% else %}
+      <h2 class="text-warning">You're not allowed on this page!</h2>
+    {% endif %}
+  {% else %}
+    {% include 'post_create.html' %}
+  {% endif %}
+{% endblock %}
