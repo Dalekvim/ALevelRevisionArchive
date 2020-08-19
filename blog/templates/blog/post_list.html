@@ -6,7 +6,7 @@
     <p>Showing results for <b>"{{search}}"</b></p>
   {% endif %}
   {% for post in object_list %}
-    <div class="container border pb-3 mb-3">
+    <div class="container border pb-2 mb-3">
       <h2 class="pt-3"><a href="{% url 'post' post.id %}">{{ post.title }}</a></h2>
       <p>
         By <a href="{% url 'profile' post.author.id %}"><b>{{ post.author }}</b></a> on <b>{{ post.date_posted|date:"l" }} the {{ post.date_posted|date:"jS" }} at {{ post.date_posted|date:"P" }}</b>
@@ -14,9 +14,6 @@
       <p>
         Subject: <b>{{ post.subject }}</b>
       </p>
-      {% autoescape off %}
-        {{ post.content }}
-      {% endautoescape %}
     </div>
   {% endfor %}
 {% endblock %}
