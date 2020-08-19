@@ -10,6 +10,7 @@ SUBJECTS = (
   ('Maths', 'Maths'),
   ('Physics', 'Physics'),
   ('Computer Science', 'Computer Science'),
+  ('Japanese', 'Japanese'),
   ('Other', 'Other'),
 )
 
